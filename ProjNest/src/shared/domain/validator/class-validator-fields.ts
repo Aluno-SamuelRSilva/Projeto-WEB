@@ -10,10 +10,13 @@ export abstract class ClassValidatorFields<PropsValidated> implements ValidatorF
     validate(data: any): boolean {
         const errors = validateSync(data)
         if(errors.length) {
-            this.errors[error.property] = Object.values(errors.constraints)
-        }
-    } else {
+            this.errors = {}
+            for(const error of errors){
+                this.errors[error.property] = Object.values(error.constraints)
+            }
+        } else {
         this.validatedData = data
     }
-    return !FieldsErrors.length
+    return !errors.length
+    }
 }

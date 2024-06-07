@@ -2,7 +2,7 @@ import { ClassValidatorFields } from '../../class-validator-fields'
 import * as libClassValidator from 'class-validator'
 
 class StubClassValidatorFields extends ClassValidatorFields<{
-    field: string
+    field: String
 }> {}
 
 describe('ClassValidatorFields unit tests', () =>{
@@ -34,7 +34,7 @@ describe('ClassValidatorFields unit tests', () =>{
         const sut = new StubClassValidatorFields()
         expect(sut.validate({field: 'value'})).toBeTruthy()
         expect(spyValidateSync).toHaveBeenCalled()
-        expect(sut.validatedData).toStrictEqual({fiel: 'value'})
+        expect(sut.validatedData).toStrictEqual({field: 'value'})
         expect(sut.errors).toBeNull()
     })
 })
