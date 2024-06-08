@@ -166,7 +166,7 @@ describe('UserValidator unit tests ', () =>{
     it('Password field exceeds maximum length - error', () =>{
         const isValid = sut.validate({
             ...UserDataBuilder({}),
-            name: 'a'.repeat(101) as any,
+            password: 'a'.repeat(101) as any
         })
         expect(isValid).toBeFalsy()
         expect(sut.errors['password']).toStrictEqual([
