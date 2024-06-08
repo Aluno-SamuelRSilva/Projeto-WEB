@@ -5,15 +5,17 @@ describe('UserEntity Unit Test', () =>{
     let props: UserProps
     let sut: UserEntity
     beforeEach(()=> {
-        props = UserDataBuilder()
+        UserEntity.validate = jest.fn()
+        props = UserDataBuilder({})
         sut = new UserEntity(props)
     })
 
     it ('Constructor method', () => {
+        expect(UserEntity.validate).toHaveBeenCalled()
         expect(sut.props.name).toEqual(props.name)
         expect(sut.props.email).toEqual(props.email)
         expect(sut.props.password).toEqual(props.password)
-        expect(sut.props.CreatAt).toBeInstanceOf(Date)
+        expect(sut.props.createdAt).toBeInstanceOf(Date)
     })
     
     it('Getter of me field', () => {
@@ -45,17 +47,19 @@ describe('UserEntity Unit Test', () =>{
     })
 
     it('Getter of CreatAt field', () => {
-        expect(sut.props.CreatAt).toBeDefined()
-        expect(sut.props.CreatAt).toBeInstanceOf(Date)
+        expect(sut.props.createdAt).toBeDefined()
+        expect(sut.props.createdAt).toBeInstanceOf(Date)
     })
 
     it('Should update a user - name', () => {
         sut.update('new name')
+        expect(UserEntity.validate).toHaveBeenCalled()
         expect(sut.props.name).toEqual('new name')
     })
 
     it('Should update a user - password', () => {
         sut.update('new password')
+        expect(UserEntity.validate).toHaveBeenCalled()
         expect(sut.props.name).toEqual('new password')
     })
 })
