@@ -191,9 +191,6 @@ describe('UserValidator unit tests ', () =>{
             ])
         })
     })
-
-
-
 })
 
 /*
