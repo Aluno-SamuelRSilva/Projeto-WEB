@@ -1,5 +1,3 @@
--- Projeto API RestFull
-
 -- Projeto criado durante estudo de Node.js e Nest.Js
 
 IFSP - Caraguatatuba
