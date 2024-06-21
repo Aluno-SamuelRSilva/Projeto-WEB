@@ -58,8 +58,8 @@ describe('UserEntity Unit Test', () =>{
     })
 
     it('Should update a user - password', () => {
-        sut.update('new password')
+        sut.updatePassword('new password')
         expect(UserEntity.validate).toHaveBeenCalled()
-        expect(sut.props.name).toEqual('new password')
+        expect(sut.props.password).toEqual('new password')
     })
 })
